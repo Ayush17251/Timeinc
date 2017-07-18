@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Timeinc" default="build" basedir="." description="Sample website.">
+    <property file="build.properties"/>
+    <includepath classpath="bin/phing"/>
+    <target name="build">
+        <phingcall target="symlink-modules-and-themes"/>
+        <phingcall target="site-install"/>
+    </target>
+    <target name="symlink-modules-and-themes">
+        <echo>Symlinking custom themes and profiles</echo>
+        <symlink target="../../../../src/sites/all/modules/custom" link="${drupal.docroot.dir}/sites/all/modules/custom"  overwrite="true"/>
+    </target>
+    <target name="site-install">
+        <echo message="Running Site install Sample website." />
+        <exec command="cd ${drupal.docroot.dir};../bin/drush -y site-install standard --site-name='${site-name}' --account-name=${site-name} --account-mail=${site-name}@${site-name}.com --account-pass=${site-name}admin --clean-url=1 --db-su=${db.username} --db-su-pw=${db.password} --db-url=mysql://${db.username}:${db.password}@${db.host}:${db.port}/${db.name}" passthru="True" checkreturn="true"/>
+        <exec command="cd ${drupal.docroot.dir};../bin/drush  en -y <list-of-modules-to-be-enabled-separated-by-space>"/>
+    </target>
+</project>
+
