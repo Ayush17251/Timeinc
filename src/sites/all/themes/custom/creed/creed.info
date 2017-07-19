@@ -1,0 +1,15 @@
+name= creed
+core=7.x
+description= Creed Theme
+engine=phptemplate
+stylesheets[all][] = template.scss
+
+regions[header] = Header region
+regions[navbar] = navbar region
+regions[search_block] = Add search bars
+regions[main_contents] = slide show and new content region 
+regions[popular_categories] = Add popular category links
+regions[event_type] = Display Event types
+regions[sidebar] =  Sidebar region
+regions[brands] = Brands region
+region[footer] = Footer region 
