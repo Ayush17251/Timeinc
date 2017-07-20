@@ -2,7 +2,7 @@ name= creed
 core=7.x
 description= Creed Theme
 engine=phptemplate
-stylesheets[all][] = template.scss
+stylesheets[all][] = template.css
 
 regions[header] = Header region
 regions[navbar] = navbar region

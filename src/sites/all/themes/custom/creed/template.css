@@ -8,38 +8,39 @@ body {
 
 .nav_bar {
   width: 965px;
-  margin: 0 auto;
-  background: #1abc9c; }
+  margin: auto; }
 
 .slide_show {
-  width: 965px;
   margin: 0 auto;
   background: #34495e; }
 
 .popular_links {
   width: 965px;
-  margin: 0 auto;
-  background: #27ae60; }
-
-.event {
-  width: 649px;
-  background: #ecf0f1;
-  margin: 0 auto;
-  display: inline-block; }
-
-.sidebar {
-  width: 316px;
-  background: #d35400;
-  margin: 0 auto;
-  display: inline-block; }
+  margin: auto;
+  background: #f2f2f2;
+  display: block; }
+  .popular_links .region-popular-categories {
+    width: 965px;
+    margin: auto;
+    display: inline; }
+    .popular_links .region-popular-categories div {
+      display: inline-block; }
+  .popular_links ul li {
+    list-style: none; }
 
 .a {
-  margin: auto;
   width: 970px; }
+  .a:nth-child(n) {
+    display: inline-block;
+    margin: 0 auto; }
+  .a .event {
+    width: 649px; }
+  .a .sidebar {
+    width: 316px; }
 
 .brands {
   width: 965px;
-  background: #2980b9;
+  margin: auto;
   margin: 0 auto; }
 
 .footer {
