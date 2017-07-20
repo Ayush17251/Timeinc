@@ -38,7 +38,10 @@
     ],
     "post-install-cmd": [
           "phing build"
-        ]
+    ],
+    "post-update-cmd":[
+	"phing enable-module"
+    ]
   },
   "config": {
     "vendor-dir": "vendor"
