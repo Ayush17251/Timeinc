@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the View_perks and discounts feature.
+ */
+
+include_once 'view_perks_and_discounts.features.inc';
