@@ -1,0 +1,12 @@
+name = menu_links 
+description = This contain all the popular links.
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:2
+features[menu_custom][] = menu-forms
+features[menu_custom][] = menu-manage-your-benefits
+features[menu_custom][] = menu-need-to-know
+features[menu_custom][] = menu-popular-links
+features[menu_custom][] = menu-tools
