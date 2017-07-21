@@ -15,16 +15,13 @@ body {
   background: #34495e; }
 
 .popular_links {
-  width: 965px;
+  width: 1024px;
   margin: auto;
   background: #f2f2f2;
-  display: block; }
-  .popular_links .region-popular-categories {
-    width: 965px;
-    margin: auto;
-    display: inline; }
-    .popular_links .region-popular-categories div {
-      display: inline-block; }
+  font-size: 13px; }
+  .popular_links .block {
+    width: 200px;
+    float: left; }
   .popular_links ul li {
     list-style: none; }
 
