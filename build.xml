@@ -8,12 +8,16 @@
     </target>
     <target name="symlink-modules-and-themes">
         <echo>Symlinking custom themes and profiles</echo>
-        <symlink target="src/sites/all/modules/custom" link="${drupal.docroot.dir}/sites/all/modules/custom"  overwrite="true"/>
+        <symlink target="../../../../src/sites/all/modules/custom" link="${drupal.docroot.dir}/sites/all/modules/custom"  overwrite="true"/>
     </target>
     <target name="site-install">
         <echo message="Running Site install Sample website." />
         <exec command="cd ${drupal.docroot.dir};drush -y site-install standard --site-name='${site-name}' --account-name=${site-name} --account-mail=${site-name}@${site-name}.com --account-pass=${site-name}admin --clean-url=1 --db-su=${db.username} --db-su-pw=${db.password} --db-url=mysql://${db.username}:${db.password}@${db.host}:${db.port}/${db.name}" passthru="True" checkreturn="true"/>
         <exec command="cd ${drupal.docroot.dir};drush  en -y admin_menu"/>
+    </target>
+    <target name="enable-module">
+        <echo message="Enabaling the module" />
+        <exec command="cd ${drupal.docroot.dir};drush en -y views devel token features pathauto> 
     </target>
 </project>
 
