@@ -1,0 +1,71 @@
+body{
+ margin: 0;
+}
+
+
+$page_width: 965px;
+
+@mixin size{
+	width: $page_width;
+	margin: auto;
+	
+}
+
+.header{
+ 	height: 30px;
+ 	width: 100%;
+ 	background: #3f86c5;
+}
+.nav_bar{
+ 	@include size;
+ 		
+}
+
+.slide_show{
+ 	
+ 	margin:0 auto;
+ 	background: #34495e;
+		   }
+
+.popular_links {
+		width: 1024px;
+		margin: auto;
+		background: #f2f2f2;
+ 		font-size: 13px;
+ 		.block{
+ 		width: 200px;
+ 		float:left;
+ 		}
+ 		
+ 		ul li{
+ 			list-style:none;
+ 		}
+	}
+
+
+
+.a{
+	width: 970px;
+	&:nth-child(n) {
+		display:inline-block;
+		margin: 0 auto;
+				}
+ 		.event{
+ 			width: 649px;
+ 			   }
+ 		.sidebar{
+ 			width: 316px;
+ 				}
+ }		
+
+.brands{
+	@include size;
+	margin: 0 auto;
+	   }
+
+.footer{
+ 	width: 100%;
+ 	background: #2c3e50;
+ 	margin: 0 auto;
+ 	height: 40px;
+ 	}

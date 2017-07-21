@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "76041c1cbce71ee7a3f118fe4f4060ec",
+
     "packages": [
         {
             "name": "composer/installers",
@@ -798,6 +799,7 @@
             }
         },
         {
+
             "name": "drupal/pathauto",
             "version": "1.3.0",
             "source": {
@@ -917,6 +919,7 @@
             }
         },
         {
+
             "name": "drupal/views",
             "version": "3.16.0",
             "source": {

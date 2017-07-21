@@ -19,5 +19,6 @@ web/sites/all/themes/*
 !web/sites/all/themes/custom
 
 build.properties
-
+.map
+.scssc
 .DS_Store
