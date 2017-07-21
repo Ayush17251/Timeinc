@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the View_employeenews feature.
+ */
+
+include_once 'view_employeenews.features.inc';
