@@ -81,52 +81,47 @@
 	<?php endif; ?>
 
 
-	<?php if($page['navbar']): ?>
-		<div class="nav_bar">
-			<div class="header_bar">
-				<div id="logo" class="inline_div">
-					
-					<?php if (theme_get_setting('logo','united')): ?>
-				    <?php if ($logo): ?><div class="site-img-logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+	<div class="wrapper">
+		<?php if($page['navbar']): ?>
+			<div class="nav_bar">
+				<div class="header_bar">
+					<div id="logo" class="inline_div">
+						
+						<?php if (theme_get_setting('logo','united')): ?>
+					    <?php if ($logo): ?><div class="site-img-logo"><a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
 
-				     <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-				    </a></div><?php endif; ?>
-				    <?php else: ?>
-				    <div>
-				     	<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
-				      	<?php if ($site_slogan): ?><div class="blog-description"><?php print $site_slogan; ?></div><?php endif; ?>
-				    </div>
-				    <?php endif; ?>					        
-		      	</div>
+					     <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+					    </a></div><?php endif; ?>
+					    <?php else: ?>
+					    <div>
+					     	<a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+					      	<?php if ($site_slogan): ?><div class="blog-description"><?php print $site_slogan; ?></div><?php endif; ?>
+					    </div>
+					    <?php endif; ?>					        
+			      	</div>
 
-		      	<?php if($page['search_block']): ?>
-		    		<div id="search_bar" class="inline_div">
-		    				<?php print render($page['search_block']); ?>
-		    		</div>
-		    	<?php endif; ?>
+			      	<?php if($page['search_block']): ?>
+			    		<aside id="search_bar" class="inline_div">
+			    				<?php print render($page['search_block']); ?>
+			    		</aside>
+			    	<?php endif; ?>
 
-			</div>
-			<nav class="navigation">
-				<div id="main_menu">
-					<?php 
-		              if (module_exists('i18n_menu')) {
-		                $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
-		              } else {
-		                $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
-		              }
-		              print drupal_render($main_menu_tree);
-		            ?>
 				</div>
-			</nav>
+				<nav class="navigation">
+					<div id="main_menu">
+						<?php 
+			                $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
+			              	print drupal_render($main_menu_tree);
+			            ?>
+					</div>
+				</nav>
+			</div>
 
-			
-			
-		</div>
-
-	<?php endif; ?>
+		<?php endif; ?>
 
 	
 		<div class="slide_show">
+			<img src="http://web.dd:8083/sites/web.dd/files/styles/thumbnail/public/imagefield_LlvmLm.jpeg?itok=EvUo7xsX" id="slideshow"/>
 			<?php print render($page['main_contents']); ?>
 		</div>
 
@@ -149,12 +144,12 @@
 		<div class="brands">
 			<?php print render($page['brands']); ?>
 		</div>
-		<div class="footer">
-			<?php print render($page['footer']); ?>
-		</div>
-
-	
+	</div>
 </div>
+
+<footer class="footer">
+	<?php print render($page['footer']); ?>		
+</footer>
 
 
 		

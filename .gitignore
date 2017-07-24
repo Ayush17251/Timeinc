@@ -1,6 +1,9 @@
 web/*
 vendor
 
+src/sites/all/themes/custom/creed/.sass-cache/d714c77b834f016fe078743f23bb94d1ec4c332d/
+src/sites/all/themes/custom/creed/template.css.map
+
 !web/sites
 web/sites/*
 !web/sites/default

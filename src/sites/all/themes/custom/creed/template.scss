@@ -1,7 +1,8 @@
 body{
- margin: 0;
+	margin: 0;
 }
 
+$time-color:#3985c7;
 
 $page_width: 965px;
 
@@ -11,21 +12,192 @@ $page_width: 965px;
 	
 }
 
+@mixin border($height, $color, $type, $where)
+{
+	@if $where == 'auto' {
+		border:$height $color $type;
+	}
+	@else if $where == bottom {
+		border-bottom: $height $color $type;
+	}
+	@else if $where == top {
+		border-top: $height $color $type;
+	}
+	@else if $where == left{
+		border-left:$height $color $type;
+	}
+}
+
+.root{
+	min-height: 100%;
+}
+
 .header{
- 	height: 30px;
  	width: 100%;
  	background: #3f86c5;
+ 	float: right;
+ 	margin-bottom: 16px;
+
+ 	h2{
+ 		display: none;
+ 	}
+
+ 	.content{
+ 		float: right;
+ 		margin-right: 112px;
+		ul{
+	 		margin:0;
+	 		display: inline-block;	
+	 		li {
+	 		list-style: none;
+	 		display: inline-block;
+
+		 		a{
+		 			text-decoration: none;
+		 			color: white;
+
+		 			&:hover{
+		 				color:darkgray;
+		 			}
+		 		}
+		 	}
+	 	}
+ 	}
+}
+
+.wrapper{
+	@include size;
+	clear: both;
 }
 .nav_bar{
- 	@include size;
+ 	
+ 	@include border(2px, gray, dotted, bottom);
+ 	border-width: 2px;
+ 	width: 100%;
+
+ 	ul li {
+ 		list-style: none;
+ 		display: inline-block;
+
+ 		a{
+ 			text-decoration: none;
+ 			font-size: 20px;
+ 			color: gray;
+
+ 			&:hover{
+ 				color:darkgray;
+ 			}
+ 		}
+
+
+ 	}
+
+ 	.navigation .expanded ul {
+ 		display: none;
+
+ 	}
+
+ 	.navigation .expanded {
+
+ 		padding: 2px;           
+ 		&:hover{
+
+ 				background-color:$time-color;
+ 			ul {
+ 				display: block;
+ 				position: absolute;
+ 				margin-left: -2px;
+    			background-color: $time-color;
+    			width: 160px;
+    			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    			padding: 12px 16px;
+    			z-index: 1;
+ 			}
+
+ 			a{
+    			color: white;
+    		}
+ 		}
+ 	}
+
+
  		
 }
 
+.brands {
+
+	.region{
+		.views-row{
+			display: inline-block;
+			width: 10%;
+			padding: 4px;
+			margin: 2px;
+			float: left;
+
+			a{
+				text-decoration: none;
+				color: $time-color;
+			}
+
+			img{
+				width: 100px;
+				height: 100px;
+			}
+
+		}
+		.node{
+
+			a {
+				text-decoration: none;
+				color: black;
+
+				.links-line li a {
+					text-decoration: underline;
+					color: blue;
+				}
+			}
+		}
+
+		.block {
+			clear: both;
+			border-top: 2px gray dotted;
+		}
+
+		h2{
+			color: $time-color;
+			@include border(2px, $time-color, solid, bottom);
+		}
+
+		table img{
+			width: 100px;
+			height: 100px;
+			margin: 2px;
+		}
+
+	}
+
+}
+
 .slide_show{
- 	
- 	margin:0 auto;
- 	background: #34495e;
-		   }
+
+	table{
+		margin: 10px;
+		img{
+			width: 100px;
+			height: 100px;
+			margin-right: 4px;
+			/*@include border(2px, $time-color, dotted);*/
+		}
+	}
+
+	#slideshow{
+ 		width: 80%;
+ 		height: 400px;
+ 		margin: 10px;
+ 	}
+
+}
+
 
 .popular_links {
 		width: 1024px;
@@ -46,6 +218,7 @@ $page_width: 965px;
 
 .a{
 	width: 970px;
+	@include border(2px, gray, dotted, top);
 	&:nth-child(n) {
 		display:inline-block;
 		margin: 0 auto;
@@ -54,18 +227,56 @@ $page_width: 965px;
  			width: 649px;
  			   }
  		.sidebar{
- 			width: 316px;
- 				}
+			width: 300px;
+			min-height: 20px;
+			display: inline-block;
+			float: left;
+			margin-left: 36px;
+			.content{
+				@include border(2px, gray, dotted, left);
+			}
+ 		}
+ 		.block{
+ 			width: 300px;
+ 			display: inline-block;
+ 			float: left;
+ 			margin-left: 12px;
+ 			margin-top: 12px;
+
+ 			a{
+ 				color: $time-color;
+ 			}
+
+ 			h2{
+ 				color: $time-color;
+ 				@include border(2px, $time-color, solid, bottom);
+ 			}
+ 		}		
+ }
+
+ .popular_links{
+ 	.content{
+ 		ul li{
+ 			display: inline-block;
+ 		}
+ 	}
  }		
 
-.brands{
-	@include size;
-	margin: 0 auto;
-	   }
-
 .footer{
+	clear: both;
  	width: 100%;
  	background: #2c3e50;
  	margin: 0 auto;
  	height: 40px;
  	}
+ #slideshow{
+ 	width: 300px;
+ 	height: 300px;
+ }
+
+ #search_bar{
+ 	display: inline-block;
+    position: absolute;
+    right: 30%;
+    top: 75px;
+ }	
