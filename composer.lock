@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "76041c1cbce71ee7a3f118fe4f4060ec",
-
+    "content-hash": "b01619bd10c93c5da50d1fdd039b9690",
     "packages": [
         {
             "name": "composer/installers",
@@ -799,7 +798,65 @@
             }
         },
         {
-
+            "name": "drupal/nice_menus",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/nice_menus",
+                "reference": "7.x-2.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/nice_menus-7.x-2.5.zip",
+                "reference": "7.x-2.5",
+                "shasum": "eeb3a98436df85106e44e73075ba302ee02b9f0b"
+            },
+            "require": {
+                "drupal/drupal": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-2.5",
+                    "datestamp": "1373943668"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "carwin",
+                    "homepage": "https://www.drupal.org/user/487058"
+                },
+                {
+                    "name": "davidtrainer",
+                    "homepage": "https://www.drupal.org/user/70776"
+                },
+                {
+                    "name": "vordude",
+                    "homepage": "https://www.drupal.org/user/150473"
+                },
+                {
+                    "name": "wuxiaogu",
+                    "homepage": "https://www.drupal.org/user/2780955"
+                },
+                {
+                    "name": "xiukun.zhou",
+                    "homepage": "https://www.drupal.org/user/2239768"
+                }
+            ],
+            "description": "CSS/jQuery drop-down, drop-right and drop-left menus to be placed in blocks",
+            "homepage": "https://www.drupal.org/project/nice_menus",
+            "support": {
+                "source": "http://cgit.drupalcode.org/nice_menus"
+            }
+        },
+        {
             "name": "drupal/pathauto",
             "version": "1.3.0",
             "source": {
@@ -810,7 +867,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/pathauto-7.x-1.3.zip",
-                "reference": null,
+                "reference": "7.x-1.3",
                 "shasum": "a4c73f3129f22ecfb9de446068e7dd3c3a45412b"
             },
             "require": {
@@ -853,6 +910,53 @@
             "homepage": "https://www.drupal.org/project/pathauto",
             "support": {
                 "source": "http://cgit.drupalcode.org/pathauto"
+            }
+        },
+        {
+            "name": "drupal/responsive_dropdown_menus",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/responsive_dropdown_menus",
+                "reference": "7.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/responsive_dropdown_menus-7.x-1.1.zip",
+                "reference": null,
+                "shasum": "f0b4c0de528cf775b713da60e833da627030c690"
+            },
+            "require": {
+                "drupal/drupal": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-1.1",
+                    "datestamp": "1428040381"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "cornifex",
+                    "homepage": "https://www.drupal.org/user/2731363"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                }
+            ],
+            "description": "Provides menu blocks for all system menus, supporting responsive design and dropdown navigation.",
+            "homepage": "https://www.drupal.org/project/responsive_dropdown_menus",
+            "support": {
+                "source": "http://cgit.drupalcode.org/responsive_dropdown_menus"
             }
         },
         {
@@ -919,7 +1023,6 @@
             }
         },
         {
-
             "name": "drupal/views",
             "version": "3.16.0",
             "source": {
