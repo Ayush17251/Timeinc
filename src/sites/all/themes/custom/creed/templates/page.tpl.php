@@ -121,7 +121,6 @@
 
 	
 		<div class="slide_show">
-			<img src="http://web.dd:8083/sites/web.dd/files/styles/thumbnail/public/imagefield_LlvmLm.jpeg?itok=EvUo7xsX" id="slideshow"/>
 			<?php print render($page['main_contents']); ?>
 		</div>
 
@@ -146,7 +145,6 @@
 		</div>
 	</div>
 </div>
-
 <footer class="footer">
 	<?php print render($page['footer']); ?>		
 </footer>
