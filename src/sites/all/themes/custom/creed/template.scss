@@ -26,6 +26,9 @@ $page_width: 965px;
 	@else if $where == left{
 		border-left:$height $color $type;
 	}
+	@else {
+		border-right: $height $color $type;
+	}
 }
 
 .root{
@@ -130,24 +133,30 @@ $page_width: 965px;
 
 .brands {
 
+
 	.region{
-		.views-row{
-			display: inline-block;
-			width: 10%;
-			padding: 4px;
-			margin: 2px;
+		float: left;
+		.content{
 			float: left;
+			width: 100%;
+			.views-row{
+				display: inline-block;
+				width: 15%;
+				padding: 4px;
+				margin: 10px;
+				float: left;
 
-			a{
-				text-decoration: none;
-				color: $time-color;
+				a{
+					text-decoration: none;
+					color: $time-color;
+				}
+
+				img{
+					width: 140px;
+					height: 140px;
+				}
+
 			}
-
-			img{
-				width: 100px;
-				height: 100px;
-			}
-
 		}
 		.node{
 
@@ -178,6 +187,22 @@ $page_width: 965px;
 			margin: 2px;
 		}
 
+		#block-views-test-block-1{
+			float: left;
+
+			.views-row{
+				padding: 0;
+				margin: 0;
+				width: auto;
+			}
+
+			img{
+				width: 120px;
+				height: 100px;
+				@include border(1px, lightgray, dotted, auto)
+			}
+		}
+
 	}
 
 	#block-views-recent-block{
@@ -194,6 +219,11 @@ $page_width: 965px;
 			td{
 				padding: 20px;
 			}
+		}
+
+		a{
+			text-decoration: none;
+			color: $time-color;
 		}
 	}
 
@@ -231,8 +261,32 @@ $page_width: 965px;
 		margin: 0 auto;
 				}
  		.event{
- 			width: 649px;
- 			   }
+ 			float: left;
+ 			.region{
+ 				float: left;
+ 				.content{
+ 					.views-row{
+ 						@include border(1px, lightgray, solid, bottom);
+ 						margin-top: 12px;
+ 						.views-field-title{
+ 							a{
+ 								text-decoration: none;
+ 								color: #636466;
+ 							}
+ 						}
+ 						.views-field-field-date{
+ 							margin-bottom: 6px;
+ 							font-size: 13px;
+ 							color: #636466; 
+ 						}
+ 					}
+ 					.views-row:last-child{
+ 						border: none;
+ 					}
+ 				}
+ 				
+ 			}
+ 		}
  		.sidebar{
 			width: 300px;
 			min-height: 20px;
@@ -244,21 +298,27 @@ $page_width: 965px;
 			}
  		}
  		.block{
- 			width: 300px;
+ 			width: 280px;
  			display: inline-block;
  			float: left;
- 			margin-left: 12px;
+ 			margin-left: 6px;
  			margin-top: 12px;
+ 			padding: 6px;
+ 			@include border(1px, #636466, dotted, right);
 
- 			a{
- 				color: $time-color;
+ 			&:last-child{
+ 				border:none;
  			}
+	 			a{
+	 				color: $time-color;
+	 			}
 
- 			h2{
- 				color: $time-color;
- 				@include border(2px, $time-color, solid, bottom);
- 			}
- 		}		
+	 			h2{
+	 				color: $time-color;
+	 				@include border(2px, $time-color, solid, bottom);
+	 			}
+ 		}
+
  }
 
  .popular_links{
@@ -283,7 +343,7 @@ $page_width: 965px;
 	 			width: 18%;
 	 			margin: 0;
 	 			padding: 6px;
-	 			@include border(2px, gray, dotted,left);
+	 			@include border(1px, gray, dotted,left);
 
 	 			a{
 	 				display: block;
@@ -337,3 +397,10 @@ $page_width: 965px;
     right: 30%;
     top: 75px;
  }	
+
+footer{
+ 	h4{
+ 		color: white;
+ 		padding: 2px;
+ 	}
+ }
