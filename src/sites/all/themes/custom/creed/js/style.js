@@ -23,7 +23,13 @@
 
 (function ($) {
     $(document).ready(function() {
-        // alert("xms mx ");
+        $('.slide_show .view-content .col-1 img').load(
+        		function(){
+        			var a = $(this).attr('src');
+        			//console.log(a)
+        			$('#slideshow').attr('src', a)
+        		}
+        	);  
         addImage();
     }); 
 }) (jQuery);

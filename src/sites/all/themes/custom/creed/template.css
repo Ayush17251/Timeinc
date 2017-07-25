@@ -71,10 +71,10 @@ body {
     width: 100%; }
     .brands .region .content .views-row {
       display: inline-block;
-      width: 15%;
-      padding: 4px;
-      margin: 10px;
+      width: 16.666%;
       float: left; }
+      .brands .region .content .views-row .views-field {
+        margin-left: 7px; }
       .brands .region .content .views-row a {
         text-decoration: none;
         color: #3985c7; }
@@ -102,9 +102,9 @@ body {
     .brands .region #block-views-test-block-1 .views-row {
       padding: 0;
       margin: 0;
-      width: auto; }
+      width: 16.6%; }
     .brands .region #block-views-test-block-1 img {
-      width: 120px;
+      width: 100%;
       height: 100px;
       border: 1px lightgray dotted; }
 .brands #block-views-recent-block {
@@ -160,14 +160,17 @@ body {
           color: #636466; }
       .a .event .region .content .views-row:last-child {
         border: none; }
+    .a .event .block:last-child {
+      border: none; }
   .a .sidebar {
     width: 300px;
     min-height: 20px;
     display: inline-block;
     float: left;
     margin-left: 36px; }
-    .a .sidebar .content {
-      border-left: 2px gray dotted; }
+    .a .sidebar .block {
+      border-left: 1px gray dotted;
+      border-right: none; }
   .a .block {
     width: 280px;
     display: inline-block;
@@ -176,10 +179,9 @@ body {
     margin-top: 12px;
     padding: 6px;
     border-right: 1px #636466 dotted; }
-    .a .block:last-child {
-      border: none; }
     .a .block a {
-      color: #3985c7; }
+      color: black;
+      text-decoration: none; }
     .a .block h2 {
       color: #3985c7;
       border-bottom: 2px #3985c7 solid; }
@@ -234,18 +236,31 @@ body {
 .footer {
   clear: both;
   width: 100%;
-  background: #2c3e50;
-  margin: 0 auto;
-  height: 40px; }
+  background: #E5E5E5;
+  border-top: 2px #3985c7 solid; }
+  .footer h2 {
+    display: none; }
+  .footer .content {
+    padding: 2px; }
+    .footer .content ul li {
+      list-style: none;
+      display: inline-block;
+      margin: 2px;
+      border-right: 1px black solid; }
+      .footer .content ul li a {
+        text-decoration: none;
+        color: black;
+        padding: 12px; }
+  .footer .block {
+    width: 48%;
+    display: inline-block; }
+    .footer .block .content {
+      margin-left: 25%; }
 
 #search_bar {
   display: inline-block;
   position: absolute;
   right: 30%;
   top: 75px; }
-
-footer h4 {
-  color: white;
-  padding: 2px; }
 
 /*# sourceMappingURL=template.css.map */

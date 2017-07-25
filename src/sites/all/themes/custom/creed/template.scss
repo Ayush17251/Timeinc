@@ -141,10 +141,12 @@ $page_width: 965px;
 			width: 100%;
 			.views-row{
 				display: inline-block;
-				width: 15%;
-				padding: 4px;
-				margin: 10px;
+				width: 16.666%;
 				float: left;
+
+				.views-field{
+					margin-left: 7px;
+				}
 
 				a{
 					text-decoration: none;
@@ -193,11 +195,11 @@ $page_width: 965px;
 			.views-row{
 				padding: 0;
 				margin: 0;
-				width: auto;
+				width: 16.6%;
 			}
 
 			img{
-				width: 120px;
+				width: 100%;
 				height: 100px;
 				@include border(1px, lightgray, dotted, auto)
 			}
@@ -286,6 +288,12 @@ $page_width: 965px;
  				}
  				
  			}
+
+ 			.block{
+	 			&:last-child{
+	 				border:none;
+	 			}
+ 			}
  		}
  		.sidebar{
 			width: 300px;
@@ -293,9 +301,12 @@ $page_width: 965px;
 			display: inline-block;
 			float: left;
 			margin-left: 36px;
-			.content{
-				@include border(2px, gray, dotted, left);
-			}
+			
+			.block{
+				@include border(1px, gray, dotted, left);
+				border-right: none;
+ 			}
+			
  		}
  		.block{
  			width: 280px;
@@ -306,11 +317,10 @@ $page_width: 965px;
  			padding: 6px;
  			@include border(1px, #636466, dotted, right);
 
- 			&:last-child{
- 				border:none;
- 			}
 	 			a{
-	 				color: $time-color;
+	 				color: black;
+	 				text-decoration: none;
+
 	 			}
 
 	 			h2{
@@ -386,9 +396,36 @@ $page_width: 965px;
 .footer{
 	clear: both;
  	width: 100%;
- 	background: #2c3e50;
- 	margin: 0 auto;
- 	height: 40px;
+ 	background: #E5E5E5;
+ 	@include border(2px, #3985c7, solid, top);
+
+	 	h2{
+	 		display: none;
+	 	}
+
+	 	.content{
+	 		padding: 2px;
+	 		ul li{
+	 			list-style: none;
+	 			display: inline-block;
+	 			margin: 2px;
+
+	 			@include border(1px, black, solid, right);
+	 			a{
+	 				text-decoration: none;
+	 				color: black;
+	 				padding: 12px;
+	 			}
+	 		}
+	 	}
+
+	 	.block{
+	 		width: 48%;
+	 		display: inline-block;
+	 		.content{
+	 			margin-left: 25%;
+	 		}
+	 	}
  	}
 
  #search_bar{
@@ -398,9 +435,4 @@ $page_width: 965px;
     top: 75px;
  }	
 
-footer{
- 	h4{
- 		color: white;
- 		padding: 2px;
- 	}
- }
+ 	

@@ -121,7 +121,6 @@
 
 	
 		<div class="slide_show">
-			<img src="http://web.dd:8083/sites/web.dd/files/field/image/Screen%20Shot%202017-07-25%20at%2010.52.14%20AM.png" id="slideshow"/>
 			<?php print render($page['main_contents']); ?>
 		</div>
 
@@ -146,10 +145,8 @@
 		</div>
 	</div>
 </div>
-
 <footer class="footer">
-	<?php print render($page['footer']); ?>
-	<h4><center>© 2014 Time Inc. All Rights Reserved.<center></h4>		
+	<?php print render($page['footer']); ?>		
 </footer>
 
 

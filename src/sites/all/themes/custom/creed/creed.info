@@ -12,4 +12,4 @@ regions[popular_categories] = Add popular category links
 regions[event_type] = Display Event types
 regions[sidebar] =  Sidebar region
 regions[brands] = Brands region
-region[footer] = Footer region 
+regions[footer] = Footer region 
