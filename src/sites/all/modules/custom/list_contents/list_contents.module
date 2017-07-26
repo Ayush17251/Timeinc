@@ -1,0 +1,59 @@
+<?php
+
+/**
+* @file
+* custom functionality for form creation
+*/
+
+/**
+* Implements hook_menu()
+*
+*/
+function list_contents_menu(){
+	$items = array();
+
+	$items['list_contents/all'] = array(
+		'title' => 'All the contents',
+		'description' => 'Lists all the contents',
+		'page callback' => 'list_contents_all_view',
+		'access callback' => TRUE
+	);
+
+	return $items;
+}
+
+/**
+*	Implements callback function to get all the contents
+*
+*/
+function list_contents_all_view(){
+
+	// Adding filters
+	$filters = list_contents_add_filters();
+
+	$query = db_select('node', 'content')
+			->fields('content', array('title', 'type', 'status', 'changed'))
+			->execute();
+
+	$data = array();
+	
+	if($query->rowCount() > 0) {
+
+		while($row = $query->fetchObject()){
+			
+			$status = $row->status == 1 ? "Published" : "Not Published";
+			$date = date("d-m-Y", ($row->changed));
+			$data[] = array($row->title, $row->type, $status, $date);
+		}
+		
+		$output = theme('table',array('header'=>array('Title', 'Type', 'Status', 'Changed'), 'rows'=>$data));
+	}
+	else {
+		$output = "Nothing to dispaly";
+	}		
+
+	return $output;
+
+}
+
+
