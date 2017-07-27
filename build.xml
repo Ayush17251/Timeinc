@@ -17,7 +17,8 @@
     </target>
     <target name="enable-module">
         <echo message="Enabaling the module" />
-        <exec command="cd ${drupal.docroot.dir};drush en -y views devel token features pathauto> 
+        <exec command="cd ${drupal.docroot.dir};drush en -y views devel token features pathauto" /> 
     </target>
 </project>
 
+`

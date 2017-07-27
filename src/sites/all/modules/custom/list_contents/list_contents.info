@@ -1,0 +1,4 @@
+name = list_contents
+description = lists all the content types
+core = 7.x
+files = list_contents.module
