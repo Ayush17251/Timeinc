@@ -1,0 +1,27 @@
+<?php
+
+
+/**
+ * Implements hook_views_api().
+ */
+function Board_views_api() {
+  return array(
+    'api' => 3,
+  );
+}
+
+function Board_views_data() {
+  $data = array();
+
+  $data['node']['all_status'] = array(
+    'group' => t('Custom'),
+    'real field' => 'my_custom_filter_field',
+    'title' => t('My custom filter'),
+    'help' => t('Some more detailed description if you need it.'),
+    'filter' => array(
+     'handler' => 'Board_handler_filter_all_status',
+    ),
+  );
+
+  return $data;
+}
