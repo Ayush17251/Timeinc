@@ -1,59 +1,201 @@
 <?php
 
 /**
-* @file
-* custom functionality for form creation
-*/
+ * @file
+ * Custom functionality for form creation.
+ */
 
 /**
-* Implements hook_menu()
-*
-*/
-function list_contents_menu(){
-	$items = array();
+ * Implements list_contents_menu().
+ */
+function list_contents_menu() {
+  $items = array();
 
-	$items['list_contents/all'] = array(
-		'title' => 'All the contents',
-		'description' => 'Lists all the contents',
-		'page callback' => 'list_contents_all_view',
-		'access callback' => TRUE
-	);
+  $items['list_contents/all'] = array(
+    'title' => 'All the contents',
+    'description' => 'Lists all the contents',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('list_contents_filter_form'),
+    'access callback' => TRUE,
+  );
 
-	return $items;
+  return $items;
 }
 
 /**
-*	Implements callback function to get all the contents
-*
-*/
-function list_contents_all_view(){
+ * Implements callback function to get all the contents.
+ */
+function list_contents_all_view($type = NULL, $status_type = NULL, $status_val = NULL) {
 
-	// Adding filters
-	$filters = list_contents_add_filters();
+  if ($type == NULL && $status_type == NULL) {
+    // Displaying all the contents.
+    $query = db_select('node', 'content')
+      ->fields('content', array('title', 'type', 'status', 'changed'))
+      ->execute();
+  }
+  elseif ($status_type == NULL) {
+    // Displaying contents of type filter.
+    $query = db_select('node', 'content')
+      ->fields('content', array('title', 'type', 'status', 'changed'))
+      ->condition('content.type', $type)
+      ->execute();
+  }
+  elseif ($type == NULL) {
+    // Displaying contents of status filter.
+    $query = db_select('node', 'content')
+      ->fields('content', array('title', 'type', 'status', 'changed'))
+      ->condition(('content.' . $status_type), $status_val)
+      ->execute();
+  }
+  else {
+    // Displaying contents of both filters.
+    $query = db_select('node', 'content')
+      ->fields('content', array('title', 'type', 'status', 'changed'))
+      ->condition('content.type', $type)
+      ->condition(('content.' . $status_type), $status_val)
+      ->execute();
+  }
 
-	$query = db_select('node', 'content')
-			->fields('content', array('title', 'type', 'status', 'changed'))
-			->execute();
+  $data = array();
 
-	$data = array();
-	
-	if($query->rowCount() > 0) {
+  if ($query->rowCount() > 0) {
 
-		while($row = $query->fetchObject()){
-			
-			$status = $row->status == 1 ? "Published" : "Not Published";
-			$date = date("d-m-Y", ($row->changed));
-			$data[] = array($row->title, $row->type, $status, $date);
-		}
-		
-		$output = theme('table',array('header'=>array('Title', 'Type', 'Status', 'Changed'), 'rows'=>$data));
-	}
-	else {
-		$output = "Nothing to dispaly";
-	}		
+    while ($row = $query->fetchObject()) {
 
-	return $output;
+      $status = $row->status == 1 ? "Published" : "Not Published";
+      $date = date("d-m-Y", ($row->changed));
+      $data[] = array($row->title, $row->type, $status, $date);
+    }
+
+    $output = theme('table',
+        array(
+          'header' => array('Title', 'Type', 'Status', 'Changed'),
+          'rows' => $data,
+        ));
+  }
+  else {
+    $output = "Nothing to dispaly";
+  }
+
+  return $output;
 
 }
 
+/**
+ * Implements adding the filters.
+ */
+function list_contents_filter_form($form, &$form_state) {
 
+  // Getting all the content types.
+  $query = db_select('node', 'content')
+    ->fields('content', array('type'))
+    ->distinct()
+    ->execute();
+
+  $types = array();
+  $types['all'] = 'all';
+  while ($row = $query->fetchObject()) {
+    $types[$row->type] = $row->type;
+  }
+
+  // Status array for selection tab.
+  $status_con = array(
+    'all' => 'all',
+    'Published' => 'Published',
+    'Not published' => 'Not published',
+    'Sticky' => 'Sticky',
+    'Not sticky' => 'Not sticky',
+    'Promoted' => 'Promoted',
+    'Not promoted' => 'Not promoted',
+  );
+
+  // Getting the filter values from session variables.
+  $type = isset($_SESSION['type']) ? $_SESSION['type'] : 'all';
+  $status_type = isset($_SESSION['status_type']) ? $_SESSION['status_type'] : NULL;
+  $status_val = isset($_SESSION['status_val']) ? $_SESSION['status_val'] : NULL;
+  $status_selected = isset($_SESSION['status_name']) ? $_SESSION['status_name'] : 'all';
+  // Creating the form to add the filter values.
+  $form['type'] = array(
+    '#type' => 'select',
+    '#title' => t('Type'),
+    '#options' => $types,
+    '#default_value' => $types[$type],
+  );
+
+  $form['status'] = array(
+    '#type' => 'select',
+    '#title' => 'status',
+    '#options' => $status_con,
+    '#default_value' => $status_con[$status_selected],
+  );
+
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => 'sumbit',
+  );
+
+  $type = $type == 'all' ? NULL : $type;
+  $status_type = $status_type == 'all' ? NULL : $status_type;
+
+  $form['table'] = array(
+    '#markup' => list_contents_all_view($type, $status_type, $status_val),
+  );
+
+  return $form;
+
+}
+
+/**
+ * Implements form submit function.
+ */
+function list_contents_filter_form_submit($form, &$form_state) {
+
+  // On submit the form getting the filter values.
+  $type = $form_state['values']['type'];
+  $status = $form_state['values']['status'];
+
+  // Storing the filter values in session array.
+  $_SESSION['type'] = $type;
+  $_SESSION['status_type'] = '';
+  $_SESSION['status_val'] = '';
+  $_SESSION['status_name'] = $status;
+
+  // Column are boolean type, type is column name.
+  // Storing the values for ease of querying.
+  switch ($status) {
+    case 'Published':
+      $_SESSION['status_type'] = 'status';
+      $_SESSION['status_val'] = 1;
+      break;
+
+    case 'Not published':
+      $_SESSION['status_type'] = 'status';
+      $_SESSION['status_val'] = 0;
+      break;
+
+    case 'Sticky':
+      $_SESSION['status_type'] = 'sticky';
+      $_SESSION['status_val'] = 1;
+      break;
+
+    case 'Not sticky':
+      $_SESSION['status_type'] = 'sticky';
+      $_SESSION['status_val'] = 0;
+      break;
+
+    case 'Promoted':
+      $_SESSION['status_type'] = 'promote';
+      $_SESSION['status_val'] = 1;
+      break;
+
+    case 'Not promoted':
+      $_SESSION['status_type'] = 'promote';
+      $_SESSION['status_val'] = 0;
+      break;
+
+    default:
+      $_SESSION['status_type'] = 'all';
+      break;
+  }
+
+}
