@@ -119,35 +119,45 @@
 
 		<?php endif; ?>
 
-	
-		<div class="slide_show">
-			<?php print render($page['main_contents']); ?>
-		</div>
+		<?php if($page['main_contents']): ?>
+			<div class="slide_show">
+				<?php print render($page['main_contents']); ?>
+			</div>
+		<?php endif; ?>
 
-		<div class="popular_links">
-			<?php print render($page['popular_categories']); ?>
-		</div>
+		<?php if($page['popular_categories']): ?>
+			<div class="popular_links">
+				<?php print render($page['popular_categories']); ?>
+			</div>
+		<?php endif ?>
 
 		<div class="a">
-			<div class="event">
-				<?php print render($page['event_type']); ?>
-				
-			</div>
-			<div class="sidebar">
-				<?php print render($page['sidebar']); ?>
-			</div>
+			<?php if ($page['event_type']): ?>
+				<div class="event">
+					<?php print render($page['event_type']); ?>
+					
+				</div>
+			<?php endif; ?>
+			<?php if($page['sidebar']): ?>
+				<div class="sidebar">
+					<?php print render($page['sidebar']); ?>
+				</div>
+			<?php endif; ?>
 		</div>
 
-		
-
-		<div class="brands">
-			<?php print render($page['brands']); ?>
-		</div>
+		<?php if($page['brands']): ?>
+			<div class="brands">
+				<?php print render($page['brands']); ?>
+			</div>
+		<?php endif ?>
 	</div>
 </div>
-<footer class="footer">
-	<?php print render($page['footer']); ?>		
-</footer>
+
+<?php if($page[footer]): ?>
+	<footer class="footer">
+		<?php print render($page['footer']); ?>		
+	</footer>
+<?php endif; ?>
 
 
 		
