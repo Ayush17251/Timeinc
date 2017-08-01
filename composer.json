@@ -31,6 +31,10 @@
     "drupal/nice_menus": "^2.5",
     "drupal/responsive_dropdown_menus": "^1.1",
     "drupal/ckeditor": "^1.18"
+    "drupal/quicktabs": "^3.8",
+    "drupal/panels": "^3.9",
+    "drupal/advanced_help": "^1.3"
+
 
   },
   "conflict": {
