@@ -1,0 +1,12 @@
+.grid ul li{
+	display: inline-block;
+	width: 22%;
+}
+
+.grid ul li ul li{
+	display: block;
+}
+
+.grid ul li:first-child{
+	display: block;
+}

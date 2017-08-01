@@ -1,0 +1,6 @@
+name.       = Grid Contents
+description = Grid Content the module
+core        = 7.x
+file        = grid_contents.module
+
+scripts[]=alpha.js
