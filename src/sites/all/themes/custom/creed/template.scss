@@ -31,6 +31,15 @@ $page_width: 965px;
 	}
 }
 
+@mixin align-center{
+	display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
 .root{
 	min-height: 100%;
 }
@@ -433,8 +442,85 @@ $page_width: 965px;
     position: absolute;
     right: 30%;
     top: 75px;
+ }
+
+.panel-pane{
+	clear: both;
+}
+
+ .pane-list{
+ 	float: left;
+ 	@include border(1px, black, dotted, bottom);
+ 	&:last-child{
+ 		border:none;
+ 	}
+ 	.view{
+ 		clear: both;
+ 		.views-row{
+ 			clear: both;
+	 		.views-field{
+	 			float: left;
+	 			padding: 4px;
+
+	 			a{
+ 					text-decoration: none;
+ 					color: black;
+ 				}
+
+	 		}
+	 		.views-field-body{
+	 			width:60%;
+	 		}
+
+	 		p{
+	 			margin: 0;
+	 		}
+ 		}
+ 	}
+
+ 	h2{
+ 		color: $time-color;
+ 		@include border(2px, $time-color, solid, bottom);
+ 	}
  }	
 
+.pane-grid{
+	float: left;
+	@include border(1px, black, dotted, bottom);
+	&:last-child{
+		border:none;
+	}
+	.view{
+ 		clear: both;
+ 		float: left;
+ 		.view-content{
+ 			float: left;
+	 		.views-row{
+	 			display: inline-block;
+	 			width:24%;
+	 			float: left;
+	 			text-align: center;
+	 			padding: 4px;
+	 			.views-field{
+	 				display: inline-block;
+	 				a{
+	 					text-decoration: none;
+	 					color: black;
+	 				}
+	 			}
+		 		.views-field-body{
+		 			display: none;
+		 		}
+		 		.views-field-field-date{
+		 			display: none;
+		 		}
 
-
+	 		}
+ 		}
+ 	}
+ 	h2{
+		color: $time-color;
+		@include border(2px, $time-color, solid, bottom);
+ 	}
+ }
 
