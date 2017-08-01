@@ -66,7 +66,6 @@ function list_contents_all_view($type = NULL, $status_type = NULL, $status_val =
       $date = date("d-m-Y", ($row->changed));
       $data[] = array($row->title, $row->type, $status, $date);
     }
-
     $output = theme('table',
         array(
           'header' => array('Title', 'Type', 'Status', 'Changed'),

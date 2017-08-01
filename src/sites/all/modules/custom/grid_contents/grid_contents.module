@@ -53,29 +53,4 @@ for($i=0;$i<count($data);$i++) {
     return $output;
 
 }
-
-/**
-* Implementing a function for form creation
-**/
-
-function grid_contents_filter_form($form,&$form_state) {
-
-    $view_mode=array(
-        'table'=>'Table',
-        'list'=>'List'
-        );
-
-    $form['mode']=array(
-        '#type'=>'select',
-        '#title'=>'View Modes',
-        '#options'=> $view_mode,
-        '#default_value'=>$viewmode['table'],
-        );
-    $form['submit_button'] = array(
-    '#type' => 'submit',
-    '#value' => 'sumbit',
-  );
-    return $form;
-}
-
 ?>
