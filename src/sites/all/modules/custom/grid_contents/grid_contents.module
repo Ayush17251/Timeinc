@@ -26,23 +26,28 @@ function grid_contents_all_view(){
         $query=db_select('node','n');
         $query->join('field_data_field_image','f','f.entity_id=n.nid');
         $query->join('file_managed','c','c.fid=f.field_image_fid');
+        $query->join('field_data_field_author','l','n.nid=l.entity_id');
+        $query->join('field_data_body','s','n.nid=s.entity_id');
         $result=$query
         ->fields('n',array('nid','type','created'))
         ->fields('c',array('uri'))
+        ->fields('l',array('field_author_value'))
+        ->fields('s',array('body_value'))
         ->execute();
-
-    
+        
     foreach ($result as $row) {
         $created=date("d-m-y",($row->created));
-        $data[]=array($row->nid,$row->type,theme('image',array('path'=>($row->uri),'width' => '100px',
-      'height' => '100px',)),$created);
+        $trimmed_text = substr($row->body_value, 0, 200) . '...more';
+        $data[]=array($row->nid,$row->type,theme('image',array('path'=>($row->uri),'width' => '200px',
+      'height' => '200px',)),$created,$row->field_author_value,$trimmed_text);
         
     }
+    
     drupal_add_css(drupal_get_path('module','grid_contents'). '/node.css');
     $item[] = "<button id='btn-list'>List</button><button id='btn-grid'>Grid</button>";
 for($i=0;$i<count($data);$i++) {
-   $item[]=array('data'=>$data[$i][0],‘class’ => array('alpha', 'beta'),
-           'children'=>array($data[$i][1],$data[$i][2],$data[$i][3]));
+   $item[]=array('data'=>$data[$i][2],'class' => array('alpha'),
+           'children'=>array(array('data'=>$data[$i][4],'class'=>array('author')),array('data'=>$data[$i][1],'class'=>array('type')),array('data'=>$data[$i][3],'class'=>array('created')),array('data'=>$data[$i][5],'class'=>array('body'))));
 
        }
     
