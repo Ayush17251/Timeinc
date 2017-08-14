@@ -1,0 +1,102 @@
+<?php
+
+
+
+function ajax_form_menu() {
+	$items = array();
+
+	$items['ajax/user'] = array(
+		'title' => 'user form',
+		'description' => 'form to store user details',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('ajax_form_ex'),
+		'access callback' => TRUE
+	);
+
+	// $items['ajax_form_autocomplete_callback']=array(
+	// 	'page callback'=>'drupal_get_form',
+	// 	'page arguments'=>array('ajax_form_'
+	// 		)
+
+
+	return $items;
+}
+
+
+
+function ajax_form_ex($form,&$form_state) {
+	$form['name'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Enter full name:'),
+		'#maxlength' => 40,
+		'#required' => True,
+		'#ajax' => array(
+		'callback' => 'ajax_form_validate',
+		'wrapper' => 'show_status',
+		)
+	);
+	$form['email'] = array(
+
+		'#type' => 'textfield',
+		'#title' => t('Enter email-id:'),
+		'#required' => True
+	);
+	$form['submit']=array(
+		'#type'=> 'submit',
+		'#value'=>'submit'
+		
+	);
+	drupal_add_js(drupal_get_path('module','ajax_form').'/alpha.js');
+	drupal_add_js(array('ajax_form' => array('test1' => $c)), 'setting');
+	return $form;
+}
+
+function ajax_form_ex_submit($form,&$form_state) {
+	$name=$form_state['values']['name'];
+	$email = $form_state['values']['email'];
+	db_insert('user_info')->fields(array(
+		'name'=>$name,
+		'email'=>$email
+	))
+	->execute();
+	drupal_set_message(t('Your form has been saved.'));
+}
+
+
+function ajax_form_ex_validate($form,&$form_state) {
+	$email=$form_state['values']['email'];
+	$name=$form_state['values']['name'];
+	if(strlen($name)<3) {
+		form_set_error('name',t('Change the username'));
+		
+	}
+	if(filter_var($email,FILTER_VALIDATE_EMAIL) === false)
+	{
+		form_set_error('email', t('Invalid email format'));
+		
+	}
+
+}
+
+function ajax_form_validate($form, &$form_state) {
+	$name = $form_state['values']['name'];
+	$email=$form_state['values']['email'];
+	$query = db_select('user_info', 'user')
+			->condition('user.name', $name)
+			->fields('user', array('name'))
+			->execute();
+	$query1 = db_select('user_info', 'user')
+			->condition('user.email', $email)
+			->fields('user', array('email'))
+			->execute();
+
+	$commands = array();
+	if($query->rowCount() > 0)
+	{	
+		$commands[]=ajax_command_alert('User Already Exist');
+		$commands[] = ajax_command_invoke('#edit-name','val', array(''));
+  		
+  		return array('#type' => 'ajax', '#commands' => $commands);
+}
+}
+?>

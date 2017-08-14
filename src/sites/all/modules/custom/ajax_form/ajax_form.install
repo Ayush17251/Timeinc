@@ -1,0 +1,27 @@
+<?php 
+
+function ajax_form_schema() {
+
+	$schema['user_info']=array(
+		'description'=>'user info',
+		'fields'=>array(
+			'name' => array(
+				'description' => 'user name',
+				'type' => 'varchar',
+				'length' => 30,
+				'not null' => TRUE
+			),
+			'email' => array(
+				'description' => 'user email id',
+				'type' => 'varchar',
+				'length' => 40,
+				'not null' => TRUE
+				)
+			
+		)
+	);
+	return $schema;
+}
+function ajax_form_update_7001() {
+
+}
