@@ -1,8 +1,20 @@
 .grid ul li{
 	display: inline-block;
 	width: 22%;
+	margin-bottom: 10px;
 }
 
+.grid ul li .hash{
+	width: 200px;
+}
+
+.grid .hash ul li{
+	width: 200px;
+}
+
+.grid .hash {
+	font-size: 20px;
+}
 .grid ul li ul li{
 	display: block;
 }
@@ -10,3 +22,77 @@
 .grid ul li:first-child{
 	display: block;
 }
+
+.list .hash ul li{
+	list-style: none;
+}
+.list .hash{
+	display: inline-block;
+	margin-left: 50px;
+	font-size: 29px;
+}
+
+.list .alpha{
+	border-bottom: 1px dotted grey;
+}
+
+.list ul li{
+	border-bottom: 2px dotted grey;
+}
+
+.list ul li ul li{
+	border-bottom: none;
+}
+
+.list ul .first {
+	border-bottom: none;
+	list-style: none;
+}
+.list .hash ul{
+	width: 690px;
+}
+
+.list .hash .last{
+	font-size: 20px;
+	color: #95a5a6;
+}
+#btn-list {
+	font-size: 20px;
+	padding:10px;
+	margin-left: 10px;
+}
+#btn-grid {
+	font-size: 20px;
+	padding:10px;
+}
+.list img{
+	margin-top: 40px;
+}
+
+.list .hash .alpha{
+
+	border-bottom: none;
+}
+
+.list .hash .type{
+	display: none;
+}
+
+.grid .hash .type{
+	display: none;
+}
+
+.grid .hash .created{
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+

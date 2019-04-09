@@ -1,0 +1,57 @@
+<?php
+
+/**
+* IMplementing a hook menu
+**/
+
+function show_json_menu() {
+	$item=array();
+	$item['animal/json']=array(
+		'title' => 'Json Representation',
+		'page callback' => 'show_json_content',
+		'access callback' => TRUE,
+		'type' => MENU_CALLBACK,
+	);
+	return $item;
+}
+
+function show_json_content() {
+	$type = "animals";
+	$query=array();
+	$nodes = node_load($nid=207,$vid=NULL);
+	$query['Breed']=$nodes->field_breed['und'][0]['value'];
+	$query['Class']=$nodes->field_class['und'][0]['value'];
+	$query['Dislike']=$nodes->field_dislike['und'][0]['value'];
+	$query['Favourite Food']=$nodes->field_favourite_food['und'][0]['value'];
+	$query['Origin']=$nodes->field_origin_value['und'][0]['value'];
+	$query['Weight']=$nodes->field_weight['und'][0]['value'];
+	print_r($query);
+	/*
+	$result[]=$nodes->field_class;
+	$result[]=$nodes->fiels_dislike;
+	
+	$node=$node_load($nid);
+	print_r($node);
+	$query=db_select('node','n');
+	$query->join('field_data_field_breed','f','f.entity_id=n.nid');
+	$query->join('field_data_field_class','g','g.entity_id=n.nid');
+	$query->join('field_data_field_dislike','h','h.entity_id=n.nid');
+	$query->join('field_data_field_favourite_food','j','j.entity_id=n.nid');
+	$query->join('field_data_field_origin','k','k.entity_id=n.nid');
+	$query->join('field_data_field_weight','l','l.entity_id=n.nid');
+	$query->addField('n', 'type', 'type');
+	$query->addField('f','field_breed_value','Breed');
+	$query->addField('g','field_class_value','Class');
+	$query->addField('h','field_dislike_value','Dislike');
+	$query->addField('j','field_favourite_food_value','Favourite');
+	$query->addField('k','field_origin_value','Origin');
+	$query->addField('l','field_weight_value','Weight');
+	$result=$query
+		->execute()->fetchAll();
+	*/
+	return drupal_json_output($query);
+	
+}
+
+
+?>
